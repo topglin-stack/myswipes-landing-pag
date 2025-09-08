@@ -3,13 +3,13 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { toast, Toaster } from 'sonner'
 
-// Import real assets
-import heroImage from '@/assets/images/hero.jpg'
-import screenshot1 from '@/assets/images/screenshot-1.jpg'
-import screenshot2 from '@/assets/images/screenshot-2.jpg'
-import screenshot3 from '@/assets/images/screenshot-3.jpg'
+// Import real assets - fallback to styled divs if images fail
+// import heroImage from '@/assets/images/hero.jpg'
+// import screenshot1 from '@/assets/images/screenshot-1.jpg'
+// import screenshot2 from '@/assets/images/screenshot-2.jpg'
+// import screenshot3 from '@/assets/images/screenshot-3.jpg'
 
-type Page = 'home' | 'privacy' | 'terms'
+type Page = 'home' | 'privacy' | 'terms' | 'contact'
 
 function App() {
   const [currentPage, setCurrentPage] = useState<Page>('home')
@@ -34,19 +34,7 @@ function App() {
       </div>
       <div className="hidden md:flex items-center gap-8">
         <button 
-          onClick={() => setCurrentPage('home')} 
-          className="hover:text-gray-600 transition-colors"
-        >
-          Features
-        </button>
-        <button 
-          onClick={() => setCurrentPage('home')} 
-          className="hover:text-gray-600 transition-colors"
-        >
-          Screenshots
-        </button>
-        <button 
-          onClick={handleContactUs} 
+          onClick={() => setCurrentPage('contact')} 
           className="hover:text-gray-600 transition-colors"
         >
           Contact
@@ -75,6 +63,12 @@ function App() {
             © 2025 MySwipes — All rights reserved.
           </p>
           <div className="flex gap-6 text-sm">
+            <button 
+              onClick={() => setCurrentPage('contact')}
+              className="hover:text-gray-600 transition-colors"
+            >
+              Contact
+            </button>
             <button 
               onClick={() => setCurrentPage('privacy')}
               className="hover:text-gray-600 transition-colors"
@@ -124,11 +118,15 @@ function App() {
           </div>
           <div className="mt-16 relative">
             <div className="absolute inset-0 bg-gradient-to-r from-purple-100 via-pink-50 to-orange-100 rounded-xl opacity-30 blur-2xl"></div>
-            <img 
-              src={heroImage} 
-              alt="MySwipes fashion discovery app interface showing personalized fashion recommendations"
-              className="hero-image relative w-full max-w-5xl mx-auto h-96 md:h-[500px] object-cover rounded-xl shadow-2xl border border-gray-200"
-            />
+            <div className="hero-image relative w-full max-w-5xl mx-auto h-96 md:h-[500px] rounded-xl shadow-2xl border border-gray-200 bg-gradient-to-br from-purple-50 via-pink-50 to-orange-50 flex items-center justify-center">
+              <div className="text-center">
+                <div className="w-24 h-24 mx-auto mb-6 bg-black rounded-2xl flex items-center justify-center">
+                  <span className="text-white text-4xl font-bold">MS</span>
+                </div>
+                <h3 className="text-2xl font-bold text-gray-800 mb-2">MySwipes App Interface</h3>
+                <p className="text-gray-600">Personalized fashion discovery with AI-powered recommendations</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -174,11 +172,13 @@ function App() {
           <div className="grid md:grid-cols-3 gap-8 lg:gap-12">
             <div className="group">
               <div className="screenshot-container relative aspect-[9/16] overflow-hidden rounded-2xl bg-white p-2 transition-all duration-300 group-hover:scale-105">
-                <img 
-                  src={screenshot1} 
-                  alt="MySwipes main swipe interface - discover fashion with intuitive swipes"
-                  className="w-full h-full object-cover rounded-xl"
-                />
+                <div className="w-full h-full bg-gradient-to-b from-pink-100 to-purple-100 rounded-xl flex flex-col items-center justify-center p-8">
+                  <div className="w-16 h-16 bg-black rounded-xl mb-4 flex items-center justify-center">
+                    <span className="text-white text-2xl">👗</span>
+                  </div>
+                  <h4 className="font-bold text-gray-800 mb-2">Swipe Interface</h4>
+                  <p className="text-sm text-gray-600 text-center">Browse fashion items with intuitive swipe gestures</p>
+                </div>
               </div>
               <div className="text-center mt-6">
                 <h3 className="text-lg font-semibold mb-2">Swipe to Discover</h3>
@@ -187,11 +187,13 @@ function App() {
             </div>
             <div className="group">
               <div className="screenshot-container relative aspect-[9/16] overflow-hidden rounded-2xl bg-white p-2 transition-all duration-300 group-hover:scale-105">
-                <img 
-                  src={screenshot2} 
-                  alt="AI-powered personalized fashion recommendations feed"
-                  className="w-full h-full object-cover rounded-xl"
-                />
+                <div className="w-full h-full bg-gradient-to-b from-blue-100 to-indigo-100 rounded-xl flex flex-col items-center justify-center p-8">
+                  <div className="w-16 h-16 bg-black rounded-xl mb-4 flex items-center justify-center">
+                    <span className="text-white text-2xl">🤖</span>
+                  </div>
+                  <h4 className="font-bold text-gray-800 mb-2">AI Recommendations</h4>
+                  <p className="text-sm text-gray-600 text-center">Smart AI learns your style preferences</p>
+                </div>
               </div>
               <div className="text-center mt-6">
                 <h3 className="text-lg font-semibold mb-2">AI Personalization</h3>
@@ -200,11 +202,13 @@ function App() {
             </div>
             <div className="group">
               <div className="screenshot-container relative aspect-[9/16] overflow-hidden rounded-2xl bg-white p-2 transition-all duration-300 group-hover:scale-105">
-                <img 
-                  src={screenshot3} 
-                  alt="Wishlist and shopping interface with saved fashion items"
-                  className="w-full h-full object-cover rounded-xl"
-                />
+                <div className="w-full h-full bg-gradient-to-b from-green-100 to-emerald-100 rounded-xl flex flex-col items-center justify-center p-8">
+                  <div className="w-16 h-16 bg-black rounded-xl mb-4 flex items-center justify-center">
+                    <span className="text-white text-2xl">💖</span>
+                  </div>
+                  <h4 className="font-bold text-gray-800 mb-2">Save & Shop</h4>
+                  <p className="text-sm text-gray-600 text-center">Wishlist favorites and shop with partners</p>
+                </div>
               </div>
               <div className="text-center mt-6">
                 <h3 className="text-lg font-semibold mb-2">Save & Shop</h3>
@@ -369,6 +373,165 @@ function App() {
     </div>
   )
 
+  const renderContactPage = () => {
+    const [formData, setFormData] = useState({
+      name: '',
+      email: '',
+      subject: '',
+      message: ''
+    })
+
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+      setFormData({
+        ...formData,
+        [e.target.name]: e.target.value
+      })
+    }
+
+    const handleSubmit = (e: React.FormEvent) => {
+      e.preventDefault()
+      const { name, email, subject, message } = formData
+      const mailtoLink = `mailto:phasiphonglin@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`)}`
+      window.location.href = mailtoLink
+      toast.success('Email client opened!', {
+        description: 'Your email client should open with the pre-filled message.'
+      })
+    }
+
+    return (
+      <div className="py-20 px-6">
+        <div className="max-w-4xl mx-auto">
+          <h1 className="text-4xl font-bold mb-12 text-center">Contact Us</h1>
+          
+          <div className="grid md:grid-cols-2 gap-12">
+            {/* Contact Info */}
+            <div>
+              <h2 className="text-2xl font-semibold mb-6">Get in Touch</h2>
+              <p className="text-gray-600 mb-8 leading-relaxed">
+                Have questions about MySwipes? Want to learn more about our affiliate program? 
+                We'd love to hear from you!
+              </p>
+              
+              <div className="space-y-4">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 bg-black rounded-full flex items-center justify-center text-white text-sm">
+                    @
+                  </div>
+                  <div>
+                    <p className="font-semibold">Email</p>
+                    <a 
+                      href="mailto:phasiphonglin@gmail.com" 
+                      className="text-gray-600 hover:text-black transition-colors"
+                    >
+                      phasiphonglin@gmail.com
+                    </a>
+                  </div>
+                </div>
+                
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 bg-black rounded-full flex items-center justify-center text-white text-sm">
+                    ⚡
+                  </div>
+                  <div>
+                    <p className="font-semibold">Response Time</p>
+                    <p className="text-gray-600">Within 24 hours</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Contact Form */}
+            <Card className="glass-card p-8">
+              <CardContent className="p-0">
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div>
+                    <label htmlFor="name" className="block text-sm font-semibold mb-2">
+                      Name *
+                    </label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      required
+                      value={formData.name}
+                      onChange={handleInputChange}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent transition-all min-h-[44px]"
+                      placeholder="Your full name"
+                    />
+                  </div>
+                  
+                  <div>
+                    <label htmlFor="email" className="block text-sm font-semibold mb-2">
+                      Email *
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      required
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent transition-all min-h-[44px]"
+                      placeholder="your.email@example.com"
+                    />
+                  </div>
+                  
+                  <div>
+                    <label htmlFor="subject" className="block text-sm font-semibold mb-2">
+                      Subject *
+                    </label>
+                    <input
+                      type="text"
+                      id="subject"
+                      name="subject"
+                      required
+                      value={formData.subject}
+                      onChange={handleInputChange}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent transition-all min-h-[44px]"
+                      placeholder="What's this about?"
+                    />
+                  </div>
+                  
+                  <div>
+                    <label htmlFor="message" className="block text-sm font-semibold mb-2">
+                      Message *
+                    </label>
+                    <textarea
+                      id="message"
+                      name="message"
+                      required
+                      rows={5}
+                      value={formData.message}
+                      onChange={handleInputChange}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent transition-all resize-none"
+                      placeholder="Tell us more about your inquiry..."
+                    />
+                  </div>
+                  
+                  <Button 
+                    type="submit"
+                    className="black-button w-full py-3 text-lg min-h-[44px]"
+                  >
+                    Send Message
+                  </Button>
+                </form>
+              </CardContent>
+            </Card>
+          </div>
+          
+          <div className="mt-16 text-center">
+            <h3 className="text-xl font-semibold mb-4">Affiliate Program Inquiries</h3>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              Interested in partnering with MySwipes? We work with fashion retailers and 
+              brands to bring the best shopping experiences to our users. Reach out to 
+              learn more about our affiliate partnership opportunities.
+            </p>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
   return (
     <div className="min-h-screen bg-background">
       <Toaster position="top-center" />
@@ -378,6 +541,7 @@ function App() {
         {currentPage === 'home' && renderHomePage()}
         {currentPage === 'privacy' && renderPrivacyPage()}
         {currentPage === 'terms' && renderTermsPage()}
+        {currentPage === 'contact' && renderContactPage()}
       </main>
 
       {renderFooter()}

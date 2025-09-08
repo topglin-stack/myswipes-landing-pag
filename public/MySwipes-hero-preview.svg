@@ -1,0 +1,23 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f8f0ff"/>
+      <stop offset="50%" style="stop-color:#fdf2f8"/>
+      <stop offset="100%" style="stop-color:#fff7ed"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  
+  <!-- Main content -->
+  <g transform="translate(600, 315)">
+    <!-- Logo -->
+    <rect x="-60" y="-100" width="120" height="120" rx="24" fill="#000"/>
+    <text x="0" y="-20" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="48" font-weight="bold">MS</text>
+    
+    <!-- Title -->
+    <text x="0" y="60" text-anchor="middle" fill="#1f2937" font-family="Arial, sans-serif" font-size="72" font-weight="bold">MySwipes</text>
+    <text x="0" y="120" text-anchor="middle" fill="#6b7280" font-family="Arial, sans-serif" font-size="36">AI Fashion Swipe Discovery</text>
+  </g>
+</svg>
