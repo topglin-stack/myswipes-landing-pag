@@ -3,14 +3,11 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { toast, Toaster } from 'sonner'
 
-// SVG placeholder images as data URLs for demonstration
-const heroImage = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='400' viewBox='0 0 800 400'%3E%3Cdefs%3E%3ClinearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23f8fafc;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%23e2e8f0;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='800' height='400' fill='url(%23grad)'/%3E%3Ccircle cx='400' cy='200' r='80' fill='%23334155' opacity='0.1'/%3E%3Ctext x='400' y='210' text-anchor='middle' font-family='Arial, sans-serif' font-size='24' fill='%23475569'%3EMySwipes Hero%3C/text%3E%3C/svg%3E"
-
-const screenshot1 = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='533' viewBox='0 0 300 533'%3E%3Cdefs%3E%3ClinearGradient id='grad1' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23fef7ff;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%23f3e8ff;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='300' height='533' fill='url(%23grad1)' rx='20'/%3E%3Crect x='20' y='80' width='260' height='180' fill='white' rx='12' opacity='0.9'/%3E%3Ccircle cx='150' cy='170' r='40' fill='%239333ea' opacity='0.2'/%3E%3Ctext x='150' y='180' text-anchor='middle' font-family='Arial, sans-serif' font-size='14' fill='%23581c87'%3ESwipe Interface%3C/text%3E%3Crect x='50' y='300' width='200' height='40' fill='%239333ea' rx='20'/%3E%3Ctext x='150' y='325' text-anchor='middle' font-family='Arial, sans-serif' font-size='12' fill='white'%3ELike%3C/text%3E%3C/svg%3E"
-
-const screenshot2 = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='533' viewBox='0 0 300 533'%3E%3Cdefs%3E%3ClinearGradient id='grad2' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23fef3e2;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%23fed7aa;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='300' height='533' fill='url(%23grad2)' rx='20'/%3E%3Crect x='20' y='60' width='260' height='60' fill='white' rx='8' opacity='0.9'/%3E%3Crect x='20' y='140' width='260' height='60' fill='white' rx='8' opacity='0.9'/%3E%3Crect x='20' y='220' width='260' height='60' fill='white' rx='8' opacity='0.9'/%3E%3Ccircle cx='50' cy='90' r='15' fill='%23ea580c' opacity='0.3'/%3E%3Ccircle cx='50' cy='170' r='15' fill='%23ea580c' opacity='0.3'/%3E%3Ccircle cx='50' cy='250' r='15' fill='%23ea580c' opacity='0.3'/%3E%3Ctext x='150' y='400' text-anchor='middle' font-family='Arial, sans-serif' font-size='14' fill='%23c2410c'%3EPersonalized Feed%3C/text%3E%3C/svg%3E"
-
-const screenshot3 = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='533' viewBox='0 0 300 533'%3E%3Cdefs%3E%3ClinearGradient id='grad3' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23ecfdf5;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%23d1fae5;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='300' height='533' fill='url(%23grad3)' rx='20'/%3E%3Crect x='20' y='80' width='80' height='80' fill='white' rx='8' opacity='0.9'/%3E%3Crect x='110' y='80' width='80' height='80' fill='white' rx='8' opacity='0.9'/%3E%3Crect x='200' y='80' width='80' height='80' fill='white' rx='8' opacity='0.9'/%3E%3Crect x='20' y='180' width='80' height='80' fill='white' rx='8' opacity='0.9'/%3E%3Crect x='110' y='180' width='80' height='80' fill='white' rx='8' opacity='0.9'/%3E%3Crect x='200' y='180' width='80' height='80' fill='white' rx='8' opacity='0.9'/%3E%3Ctext x='150' y='320' text-anchor='middle' font-family='Arial, sans-serif' font-size='14' fill='%23065f46'%3EWishlist Grid%3C/text%3E%3Crect x='50' y='350' width='200' height='40' fill='%2310b981' rx='20'/%3E%3Ctext x='150' y='375' text-anchor='middle' font-family='Arial, sans-serif' font-size='12' fill='white'%3EShop Now%3C/text%3E%3C/svg%3E"
+// Import real assets
+import heroImage from '@/assets/images/hero.jpg'
+import screenshot1 from '@/assets/images/screenshot-1.jpg'
+import screenshot2 from '@/assets/images/screenshot-2.jpg'
+import screenshot3 from '@/assets/images/screenshot-3.jpg'
 
 type Page = 'home' | 'privacy' | 'terms'
 
@@ -125,11 +122,12 @@ function App() {
               Contact Us
             </Button>
           </div>
-          <div className="mt-16">
+          <div className="mt-16 relative">
+            <div className="absolute inset-0 bg-gradient-to-r from-purple-100 via-pink-50 to-orange-100 rounded-xl opacity-30 blur-2xl"></div>
             <img 
               src={heroImage} 
-              alt="MySwipes fashion discovery app interface"
-              className="w-full h-96 object-cover rounded-lg shadow-lg"
+              alt="MySwipes fashion discovery app interface showing personalized fashion recommendations"
+              className="hero-image relative w-full max-w-5xl mx-auto h-96 md:h-[500px] object-cover rounded-xl shadow-2xl border border-gray-200"
             />
           </div>
         </div>
@@ -169,30 +167,49 @@ function App() {
       </section>
 
       {/* Screenshots Section */}
-      <section id="screenshots" className="py-20 px-6">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-16">Screenshots</h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="aspect-[9/16] overflow-hidden rounded-lg shadow-lg">
-              <img 
-                src={screenshot1} 
-                alt="MySwipes main swipe interface"
-                className="w-full h-full object-cover"
-              />
+      <section id="screenshots" className="py-20 px-6 bg-gradient-to-b from-gray-50 to-white">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-4xl font-bold text-center mb-4">See MySwipes in Action</h2>
+          <p className="text-xl text-gray-600 text-center mb-16">Experience the intuitive swipe-based fashion discovery</p>
+          <div className="grid md:grid-cols-3 gap-8 lg:gap-12">
+            <div className="group">
+              <div className="screenshot-container relative aspect-[9/16] overflow-hidden rounded-2xl bg-white p-2 transition-all duration-300 group-hover:scale-105">
+                <img 
+                  src={screenshot1} 
+                  alt="MySwipes main swipe interface - discover fashion with intuitive swipes"
+                  className="w-full h-full object-cover rounded-xl"
+                />
+              </div>
+              <div className="text-center mt-6">
+                <h3 className="text-lg font-semibold mb-2">Swipe to Discover</h3>
+                <p className="text-gray-600">Intuitive Tinder-style interface for fashion discovery</p>
+              </div>
             </div>
-            <div className="aspect-[9/16] overflow-hidden rounded-lg shadow-lg">
-              <img 
-                src={screenshot2} 
-                alt="Personalized recommendations feed"
-                className="w-full h-full object-cover"
-              />
+            <div className="group">
+              <div className="screenshot-container relative aspect-[9/16] overflow-hidden rounded-2xl bg-white p-2 transition-all duration-300 group-hover:scale-105">
+                <img 
+                  src={screenshot2} 
+                  alt="AI-powered personalized fashion recommendations feed"
+                  className="w-full h-full object-cover rounded-xl"
+                />
+              </div>
+              <div className="text-center mt-6">
+                <h3 className="text-lg font-semibold mb-2">AI Personalization</h3>
+                <p className="text-gray-600">Smart recommendations based on your style preferences</p>
+              </div>
             </div>
-            <div className="aspect-[9/16] overflow-hidden rounded-lg shadow-lg">
-              <img 
-                src={screenshot3} 
-                alt="Wishlist and shopping interface"
-                className="w-full h-full object-cover"
-              />
+            <div className="group">
+              <div className="screenshot-container relative aspect-[9/16] overflow-hidden rounded-2xl bg-white p-2 transition-all duration-300 group-hover:scale-105">
+                <img 
+                  src={screenshot3} 
+                  alt="Wishlist and shopping interface with saved fashion items"
+                  className="w-full h-full object-cover rounded-xl"
+                />
+              </div>
+              <div className="text-center mt-6">
+                <h3 className="text-lg font-semibold mb-2">Save & Shop</h3>
+                <p className="text-gray-600">Wishlist favorites and shop through partner retailers</p>
+              </div>
             </div>
           </div>
         </div>

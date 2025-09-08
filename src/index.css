@@ -91,3 +91,22 @@ body {
 .black-button:hover {
   transform: scale(1.02);
 }
+
+/* Enhanced image styling for professional appearance */
+.hero-image {
+  filter: brightness(1.05) contrast(1.05) saturate(1.1);
+}
+
+.screenshot-container {
+  box-shadow: 
+    0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04),
+    0 0 0 1px rgba(0, 0, 0, 0.05);
+}
+
+.screenshot-container:hover {
+  box-shadow: 
+    0 25px 50px -12px rgba(0, 0, 0, 0.15),
+    0 20px 20px -5px rgba(0, 0, 0, 0.08),
+    0 0 0 1px rgba(0, 0, 0, 0.05);
+}
