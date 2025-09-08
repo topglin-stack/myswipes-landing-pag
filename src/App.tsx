@@ -42,8 +42,17 @@ function App() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     const { name, email, subject, message } = formData
-    const mailtoLink = `mailto:phasiphonglin@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Name: ${name}\\nEmail: ${email}\\n\\nMessage:\\n${message}`)}`
+    const mailtoLink = `mailto:phasiphonglin@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`)}`
     window.location.href = mailtoLink
+    
+    // Reset form after successful submission
+    setFormData({
+      name: '',
+      email: '',
+      subject: '',
+      message: ''
+    })
+    
     toast.success('Email client opened!', {
       description: 'Your email client should open with the pre-filled message.'
     })
@@ -456,7 +465,7 @@ function App() {
                       required
                       value={formData.name}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent transition-all min-h-[44px]"
+                      className="w-full px-4 py-3 border border-input rounded-lg focus:ring-2 focus:ring-ring focus:border-transparent transition-all min-h-[44px] bg-background"
                       placeholder="Your full name"
                     />
                   </div>
@@ -472,7 +481,7 @@ function App() {
                       required
                       value={formData.email}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent transition-all min-h-[44px]"
+                      className="w-full px-4 py-3 border border-input rounded-lg focus:ring-2 focus:ring-ring focus:border-transparent transition-all min-h-[44px] bg-background"
                       placeholder="your.email@example.com"
                     />
                   </div>
@@ -488,7 +497,7 @@ function App() {
                       required
                       value={formData.subject}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent transition-all min-h-[44px]"
+                      className="w-full px-4 py-3 border border-input rounded-lg focus:ring-2 focus:ring-ring focus:border-transparent transition-all min-h-[44px] bg-background"
                       placeholder="What's this about?"
                     />
                   </div>
@@ -504,7 +513,7 @@ function App() {
                       rows={5}
                       value={formData.message}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent transition-all resize-none"
+                      className="w-full px-4 py-3 border border-input rounded-lg focus:ring-2 focus:ring-ring focus:border-transparent transition-all resize-none bg-background"
                       placeholder="Tell us more about your inquiry..."
                     />
                   </div>
