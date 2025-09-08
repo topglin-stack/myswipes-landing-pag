@@ -13,6 +13,14 @@ type Page = 'home' | 'privacy' | 'terms' | 'contact'
 
 function App() {
   const [currentPage, setCurrentPage] = useState<Page>('home')
+  
+  // Contact form state - moved to top level to avoid conditional hook usage
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: ''
+  })
 
   const handleComingSoon = () => {
     toast.success("Coming Soon", {
@@ -22,6 +30,23 @@ function App() {
 
   const handleContactUs = () => {
     window.location.href = 'mailto:phasiphonglin@gmail.com'
+  }
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    })
+  }
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    const { name, email, subject, message } = formData
+    const mailtoLink = `mailto:phasiphonglin@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Name: ${name}\\nEmail: ${email}\\n\\nMessage:\\n${message}`)}`
+    window.location.href = mailtoLink
+    toast.success('Email client opened!', {
+      description: 'Your email client should open with the pre-filled message.'
+    })
   }
 
   const renderNavigation = () => (
@@ -374,30 +399,6 @@ function App() {
   )
 
   const renderContactPage = () => {
-    const [formData, setFormData] = useState({
-      name: '',
-      email: '',
-      subject: '',
-      message: ''
-    })
-
-    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-      setFormData({
-        ...formData,
-        [e.target.name]: e.target.value
-      })
-    }
-
-    const handleSubmit = (e: React.FormEvent) => {
-      e.preventDefault()
-      const { name, email, subject, message } = formData
-      const mailtoLink = `mailto:phasiphonglin@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`)}`
-      window.location.href = mailtoLink
-      toast.success('Email client opened!', {
-        description: 'Your email client should open with the pre-filled message.'
-      })
-    }
-
     return (
       <div className="py-20 px-6">
         <div className="max-w-4xl mx-auto">
