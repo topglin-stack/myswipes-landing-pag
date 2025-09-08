@@ -1,8 +1,7 @@
 import { useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
-import { toast } from 'sonner'
-import { Toaster } from '@/components/ui/sonner'
+import { toast, Toaster } from 'sonner'
 
 type Page = 'home' | 'privacy' | 'terms'
 
@@ -328,7 +327,7 @@ function App() {
 
   return (
     <div className="min-h-screen bg-background">
-      <Toaster />
+      <Toaster position="top-center" />
       {renderNavigation()}
       
       <main>
