@@ -7,14 +7,6 @@ type Page = 'home' | 'privacy' | 'terms' | 'contact'
 
 function App() {
   const [currentPage, setCurrentPage] = useState<Page>('home')
-  
-  // Contact form state - always initialized to avoid conditional hook issues
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
-  })
 
   const handleComingSoon = () => {
     toast.success("Coming Soon", {
@@ -24,32 +16,6 @@ function App() {
 
   const handleContactUs = () => {
     window.location.href = 'mailto:phasiphonglin@gmail.com'
-  }
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    })
-  }
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    const { name, email, subject, message } = formData
-    const mailtoLink = `mailto:phasiphonglin@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`)}`
-    window.location.href = mailtoLink
-    
-    // Reset form after successful submission
-    setFormData({
-      name: '',
-      email: '',
-      subject: '',
-      message: ''
-    })
-    
-    toast.success('Email client opened!', {
-      description: 'Your email client should open with the pre-filled message.'
-    })
   }
 
   const renderNavigation = () => (
@@ -403,132 +369,20 @@ function App() {
 
   const renderContactPage = () => (
     <div className="py-20 px-6">
-      <div className="max-w-4xl mx-auto">
-        <h1 className="text-4xl font-bold mb-12 text-center">Contact Us</h1>
+      <div className="max-w-4xl mx-auto text-center">
+        <h1 className="text-4xl font-bold mb-12">Contact Us</h1>
         
-        <div className="grid md:grid-cols-2 gap-12">
-          {/* Contact Info */}
-          <div>
-            <h2 className="text-2xl font-semibold mb-6">Get in Touch</h2>
-            <p className="text-gray-600 mb-8 leading-relaxed">
-              Have questions about MySwipes? Want to learn more about our affiliate program? 
-              We'd love to hear from you!
-            </p>
-            
-            <div className="space-y-4">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-black rounded-full flex items-center justify-center text-white text-sm">
-                  @
-                </div>
-                <div>
-                  <p className="font-semibold">Email</p>
-                  <a 
-                    href="mailto:phasiphonglin@gmail.com" 
-                    className="text-gray-600 hover:text-black transition-colors"
-                  >
-                    phasiphonglin@gmail.com
-                  </a>
-                </div>
-              </div>
-              
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-black rounded-full flex items-center justify-center text-white text-sm">
-                  ⚡
-                </div>
-                <div>
-                  <p className="font-semibold">Response Time</p>
-                  <p className="text-gray-600">Within 24 hours</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Contact Form */}
-          <Card className="glass-card p-8">
-            <CardContent className="p-0">
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div>
-                  <label htmlFor="name" className="block text-sm font-semibold mb-2">
-                    Name *
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    required
-                    value={formData.name}
-                    onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-input rounded-lg focus:ring-2 focus:ring-ring focus:border-transparent transition-all min-h-[44px] bg-background"
-                    placeholder="Your full name"
-                  />
-                </div>
-                
-                <div>
-                  <label htmlFor="email" className="block text-sm font-semibold mb-2">
-                    Email *
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    required
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-input rounded-lg focus:ring-2 focus:ring-ring focus:border-transparent transition-all min-h-[44px] bg-background"
-                    placeholder="your.email@example.com"
-                  />
-                </div>
-                
-                <div>
-                  <label htmlFor="subject" className="block text-sm font-semibold mb-2">
-                    Subject *
-                  </label>
-                  <input
-                    type="text"
-                    id="subject"
-                    name="subject"
-                    required
-                    value={formData.subject}
-                    onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-input rounded-lg focus:ring-2 focus:ring-ring focus:border-transparent transition-all min-h-[44px] bg-background"
-                    placeholder="What's this about?"
-                  />
-                </div>
-                
-                <div>
-                  <label htmlFor="message" className="block text-sm font-semibold mb-2">
-                    Message *
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    required
-                    rows={5}
-                    value={formData.message}
-                    onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-input rounded-lg focus:ring-2 focus:ring-ring focus:border-transparent transition-all resize-none bg-background"
-                    placeholder="Tell us more about your inquiry..."
-                  />
-                </div>
-                
-                <Button 
-                  type="submit"
-                  className="black-button w-full py-3 text-lg min-h-[44px]"
-                >
-                  Send Message
-                </Button>
-              </form>
-            </CardContent>
-          </Card>
-        </div>
-        
-        <div className="mt-16 text-center">
-          <h3 className="text-xl font-semibold mb-4">Affiliate Program Inquiries</h3>
-          <p className="text-gray-600 max-w-2xl mx-auto">
-            Interested in partnering with MySwipes? We work with fashion retailers and 
-            brands to bring the best shopping experiences to our users. Reach out to 
-            learn more about our affiliate partnership opportunities.
+        <div className="max-w-2xl mx-auto">
+          <p className="text-xl text-gray-700 mb-8 leading-relaxed">
+            For more information contact developer:
           </p>
+          
+          <a 
+            href="mailto:phasiphonglin@gmail.com" 
+            className="text-2xl font-semibold text-black hover:text-gray-600 transition-colors underline decoration-2"
+          >
+            phasiphonglin@gmail.com
+          </a>
         </div>
       </div>
     </div>
